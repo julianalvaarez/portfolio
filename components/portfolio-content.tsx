@@ -117,9 +117,11 @@ export function PortfolioContent() {
       description: t.sections.experience.projects.nutri.description,
       details: t.sections.experience.projects.nutri.details,
       img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1000&auto=format&fit=crop",
+      video: "/web-nutricion.mp4",
       link: "https://lucianacresia.vercel.app",
       github: "https://github.com/julianalvaarez/nutri-platform",
-      color: "from-green-500/20 to-emerald-500/20"
+      color: "from-green-500/20 to-emerald-500/20",
+      stack: ["Next.js", "TypeScript", "Supabase", "TailwindCSS"]
     },
     {
       id: "barber",
@@ -127,9 +129,34 @@ export function PortfolioContent() {
       description: t.sections.experience.projects.barber.description,
       details: t.sections.experience.projects.barber.details,
       img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000&auto=format&fit=crop",
+      video: "/web-barber.mp4",
       link: "https://maribarbershop.vercel.app",
       github: "https://github.com/julianalvaarez/barber-system",
-      color: "from-blue-500/20 to-indigo-500/20"
+      color: "from-blue-500/20 to-indigo-500/20",
+      stack: ["React", "TypeScript", "Node.js", "Supabase", "TailwindCSS"]
+    },
+    {
+      id: "caps",
+      title: t.sections.experience.projects.caps.title,
+      description: t.sections.experience.projects.caps.description,
+      details: t.sections.experience.projects.caps.details,
+      img: "/lsbcaps.png",
+      video: "/web-lsbcaps.mp4",
+      link: "https://lsbcaps.vercel.app",
+      github: "https://github.com/julianalvaarez",
+      color: "from-amber-600/20 to-orange-600/20",
+      stack: ["Next.js", "TypeScript", "Supabase", "TailwindCSS"]
+    },
+    {
+      id: "restaurant",
+      title: t.sections.experience.projects.restaurant.title,
+      description: t.sections.experience.projects.restaurant.description,
+      details: t.sections.experience.projects.restaurant.details,
+      img: "/descamisado.png",
+      link: "https://eldescamisado.vercel.app",
+      github: "https://github.com/julianalvaarez",
+      color: "from-rose-500/20 to-red-500/20",
+      stack: ["React", "TailwindCSS"]
     }
   ];
 
@@ -142,39 +169,120 @@ export function PortfolioContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 z-[100] bg-zinc-950/95 backdrop-blur-xl p-6 md:p-12 flex items-center justify-center"
+            className="fixed inset-0 z-[200] bg-zinc-950 flex flex-col md:flex-row overflow-hidden"
           >
+            {/* Visual Section - Video/Media */}
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="max-w-3xl w-full bg-zinc-900 border border-white/10 rounded-[40px] overflow-hidden shadow-2xl relative"
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="w-full md:w-3/5 h-[40vh] md:h-full relative bg-zinc-950 group overflow-hidden flex items-center justify-center p-6 md:p-12 lg:p-20"
             >
-              <div className="h-48 md:h-72 relative">
-                <img src={selectedProject.img} alt={selectedProject.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent" />
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-black transition-all z-50 text-xl"
-                >
-                  ✕
-                </button>
+              <div className="relative w-full h-full rounded-2xl md:rounded-[40px] overflow-hidden shadow-2xl border border-white/5 bg-black">
+                {selectedProject.video ? (
+                  <video
+                    src={selectedProject.video}
+                    poster={selectedProject.img}
+                    className="w-full h-full object-contain"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    title={`Video preview of ${selectedProject.title}`}
+                  />
+                ) : (
+                  <img src={selectedProject.img} alt={selectedProject.title} className="w-full h-full object-contain" />
+                )}
+
+                {/* Internal subtle gradient for the video */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
               </div>
-              <div className="p-8 md:p-12">
-                <h3 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+
+              {/* Transition gradient between video area and info area */}
+              <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent hidden md:block z-10 pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent md:hidden z-10 pointer-events-none" />
+
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-8 left-8 w-14 h-14 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all z-50 group hover:scale-110 active:scale-95 shadow-2xl"
+              >
+                <ChevronRight className="w-6 h-6 rotate-180 group-hover:-translate-x-1 transition-transform" />
+              </button>
+            </motion.div>
+
+            {/* Content Section - Info */}
+            <motion.div
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="w-full md:w-2/5 h-[60vh] md:h-full p-8 md:p-16 flex flex-col justify-center bg-zinc-950 relative overflow-y-auto custom-scrollbar border-l border-white/5"
+            >
+              <div className="max-w-2xl">
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="text-purple-500 font-mono mb-4 text-xs tracking-[0.4em] uppercase block"
+                >
+                  Proyecto Destacado
+                </motion.span>
+
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-white to-white/30 bg-clip-text text-transparent leading-[1.1]"
+                >
                   {selectedProject.title}
-                </h3>
-                <p className="text-zinc-400 text-lg leading-relaxed mb-10">
-                  {selectedProject.details}
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
-                    <Rocket className="w-5 h-5" /> {t.sections.experience.website}
-                  </a>
-                  <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-full hover:bg-white/10 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
-                    <SiGithub className="w-5 h-5" /> {t.sections.experience.github}
-                  </a>
+                </motion.h3>
+
+                <div className="space-y-10 md:space-y-12">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <h4 className="text-white/20 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Sobre el Proyecto</h4>
+                    <p className="text-zinc-400 text-lg md:text-xl leading-relaxed font-light">
+                      {selectedProject.details}
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                  >
+                    <h4 className="text-white/20 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Tecnologías</h4>
+                    <div className="flex flex-wrap gap-2 md:gap-3">
+                      {selectedProject.stack?.map((tag: string) => (
+                        <span key={tag} className="px-4 py-1.5 bg-white/5 border border-white/10 text-white/80 text-xs font-bold rounded-full hover:border-purple-500/40 transition-colors uppercase tracking-widest">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9 }}
+                    className="flex flex-wrap items-center gap-4 pt-6"
+                  >
+                    <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-white text-black font-black rounded-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-3 text-sm shadow-[0_20px_40px_rgba(255,255,255,0.05)] uppercase tracking-tight">
+                      <Rocket className="w-5 h-5 italic" /> {t.sections.experience.website}
+                    </a>
+                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="p-5 bg-white/5 border border-white/10 text-white rounded-2xl hover:bg-white/10 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+                      <SiGithub className="w-6 h-6" />
+                    </a>
+                  </motion.div>
                 </div>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute bottom-10 right-10 opacity-5 hidden md:block">
+                <span className="text-8xl font-black italic tracking-tighter">0{freelanceProjects.indexOf(selectedProject) + 1}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -253,6 +361,15 @@ export function PortfolioContent() {
                 <div className="h-64 overflow-hidden relative">
                   <div className={cn("absolute inset-0 bg-gradient-to-br opacity-50 group-hover:opacity-70 transition-opacity", p.color)} />
                   <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 mix-blend-overlay" />
+
+                  {/* Video Indicator */}
+                  {p.video && (
+                    <div className="absolute top-6 left-6 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-white">Video</span>
+                    </div>
+                  )}
+
                   <div className="absolute top-6 right-6 p-3 rounded-full bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
                     <Rocket className="w-5 h-5 text-white" />
                   </div>

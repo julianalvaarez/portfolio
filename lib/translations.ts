@@ -37,13 +37,23 @@ export const translations = {
         projects: {
           nutri: {
             title: "Plataforma para Nutricionistas",
-            description: "Sistema integral de gestión clínica con reserva de turnos multisucursal y pagos integrados.",
+            description: "Sistema de gestión clínica con reserva de turnos multisucursal y pagos integrados.",
             details: "Desarrollé una solución completa que permite a los pacientes agendar citas en diferentes sucursales y realizar pagos en línea. El sistema incluye un panel administrativo avanzado para la gestión de agendas, horarios dinámicos y seguimiento de pacientes.",
           },
           barber: {
-            title: "Ecosistema para Barberías",
+            title: "Plataforma para Barberías",
             description: "Gestión de turnos online con motor de estadísticas y analítica de rendimiento.",
             details: "Creé una plataforma que automatiza la reserva de servicios y ofrece un panel de control empresarial. Incluye analíticas detalladas sobre ingresos, rendimiento por profesional, gráficos comparativos y estadísticas de crecimiento del negocio.",
+          },
+          caps: {
+            title: "E-commerce de Gorras",
+            description: "Tienda online con gestión de stock y pedidos personalizados.",
+            details: "Desarrollé una plataforma de venta de gorras que incluye un catálogo dinámico y un panel de administración para controlar inventario y pedidos, optimizando la operación del negocio sin necesidad de pasarelas de pago.",
+          },
+          restaurant: {
+            title: "Landing Page para Restaurante",
+            description: "Sitio web informativo con menú digital interactivo.",
+            details: "Creé una landing page enfocada en la conversión y la experiencia del usuario, presentando la historia del restaurante, su ubicación y un menú online fácil de navegar para los comensales.",
           }
         }
       },
@@ -93,20 +103,30 @@ export const translations = {
         projects: {
           nutri: {
             title: "Nutritionist Platform",
-            description: "Comprehensive clinical management system with multi-branch appointment booking and integrated payments.",
+            description: "Clinical management system with multi-branch appointment booking and integrated payments.",
             details: "I developed a complete solution that allows patients to book appointments across different branches and make online payments. The system includes an advanced administrative panel for agenda management, dynamic schedules, and patient tracking.",
           },
           barber: {
             title: "Barbershop Ecosystem",
             description: "Online appointment management with statistics engine and performance analytics.",
             details: "I created a platform that automates service booking and offers a business control panel. It includes detailed analytics on income, professional performance, comparative charts, and business growth statistics.",
+          },
+          caps: {
+            title: "Caps E-commerce",
+            description: "Online store with stock management and custom orders.",
+            details: "I developed a caps sales platform including a dynamic catalog and an admin panel to control inventory and orders, optimizing business operations without the need for complex payment gateways.",
+          },
+          restaurant: {
+            title: "Restaurant Landing Page",
+            description: "Informative website with interactive digital menu.",
+            details: "I created a landing page focused on conversion and user experience, presenting the restaurant's history, location, and an online menu easy for diners to navigate.",
           }
         }
       },
       contact: {
         tag: "04. Contact",
         title: "Ready to bring your next big project to life?",
-        content: "I'm looking to collaborate on innovative and practical solutions for my clients. If you have an idea, let's talk about how to make it a reality with professionalism and technical excellence.",
+        content: "I'm looking to collaborate on innovative solutions that push technological boundaries. If you have an idea, let's talk about how to make it a reality with professionalism and technical excellence.",
         button: "Send Email",
       },
     },
