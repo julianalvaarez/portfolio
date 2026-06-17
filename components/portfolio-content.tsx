@@ -117,7 +117,7 @@ export function PortfolioContent() {
       description: t.sections.experience.projects.nutri.description,
       details: t.sections.experience.projects.nutri.details,
       img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1000&auto=format&fit=crop",
-      video: "/web-nutricion.mp4",
+      video: "/luci-promo.mp4",
       link: "https://lucianacresia.vercel.app",
       github: "https://github.com/julianalvaarez/nutri-platform",
       color: "from-green-500/20 to-emerald-500/20",
